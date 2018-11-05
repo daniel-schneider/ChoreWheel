@@ -1,0 +1,196 @@
+{
+  "initialChoreSet" : [
+    {
+      "completed" : false,
+      "description" : "Living Room",
+      "frequency" : "1/day",
+      "id" : "Bvxio",
+      "shared" : true,
+      "title" : "Throw away junk mail"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen",
+      "frequency" : "1/week",
+      "id" : "Cksgm",
+      "shared" : true,
+      "title" : "Clean sink, fridge handle, and microwave exterior"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen/Bathroom/Laundry",
+      "frequency" : "1/day",
+      "id" : "Dwaah",
+      "shared" : false,
+      "title" : "Put items back into drawers/cabinets"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen",
+      "frequency" : "1/day",
+      "id" : "Fekzf",
+      "shared" : true,
+      "title" : "Put clean dishes away"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen",
+      "frequency" : "1/month",
+      "id" : "Fkyvy",
+      "shared" : true,
+      "title" : "Clean fridge, freezer, and pantry. Throw away expired food"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen",
+      "frequency" : "1/day",
+      "id" : "Flnxt",
+      "shared" : true,
+      "title" : "Clean Dirty Dishes"
+    },
+    {
+      "completed" : false,
+      "description" : "Living Room",
+      "frequency" : "1/day",
+      "id" : "Gppea",
+      "shared" : true,
+      "title" : "Tidy up all surfaces"
+    },
+    {
+      "completed" : false,
+      "description" : "Living Room",
+      "frequency" : "1/week",
+      "id" : "Janat",
+      "shared" : true,
+      "title" : "Water plants"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen",
+      "frequency" : "1/week",
+      "id" : "Jtzzi",
+      "shared" : true,
+      "title" : "Take out trash and Recycling if full"
+    },
+    {
+      "completed" : false,
+      "description" : "Office",
+      "frequency" : "1/week",
+      "id" : "Klhtz",
+      "shared" : false,
+      "title" : "Organize desk/working space"
+    },
+    {
+      "completed" : false,
+      "description" : "Living Room",
+      "frequency" : "1/week",
+      "id" : "Loola",
+      "shared" : true,
+      "title" : "Vacuum"
+    },
+    {
+      "completed" : false,
+      "description" : "Living Room/Bathroom/Kitchen",
+      "frequency" : "1/month",
+      "id" : "Nzlup",
+      "shared" : true,
+      "title" : "Clean Rugs: shake out and vacuum"
+    },
+    {
+      "completed" : false,
+      "description" : "Bathroom",
+      "frequency" : "1/week",
+      "id" : "Odgnd",
+      "shared" : true,
+      "title" : "Clean toilet, counter, mirror, and doorknob"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen",
+      "frequency" : "1/month",
+      "id" : "Ojtnh",
+      "shared" : true,
+      "title" : "Clean microwave interior"
+    },
+    {
+      "completed" : false,
+      "description" : "Living Room",
+      "frequency" : "1/month",
+      "id" : "Pqozz",
+      "shared" : true,
+      "title" : "Disinfect light switches and doorknobs"
+    },
+    {
+      "completed" : false,
+      "description" : "Living Room/Bathroom/Kitchen",
+      "frequency" : "1/month",
+      "id" : "Raiui",
+      "shared" : true,
+      "title" : "Mop floors"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen",
+      "frequency" : "1/day",
+      "id" : "Snoin",
+      "shared" : true,
+      "title" : "Sweep the floor"
+    },
+    {
+      "completed" : false,
+      "description" : "Living Room",
+      "frequency" : "1/week",
+      "id" : "Tywnh",
+      "shared" : true,
+      "title" : "Dust"
+    },
+    {
+      "completed" : false,
+      "description" : "Bathroom",
+      "frequency" : "1/month",
+      "id" : "Ungsm",
+      "shared" : true,
+      "title" : "Clean bath tub"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen",
+      "frequency" : "1/day",
+      "id" : "Xnafc",
+      "shared" : true,
+      "title" : "Wipe Down Counters"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen",
+      "frequency" : "1/week",
+      "id" : "Ygwkq",
+      "shared" : true,
+      "title" : "Wipe down appliances"
+    },
+    {
+      "completed" : false,
+      "description" : "Bedroom",
+      "frequency" : "1/day",
+      "id" : "Yrchi",
+      "shared" : false,
+      "title" : "Put dirty clothes in hamper"
+    },
+    {
+      "completed" : false,
+      "description" : "Bathroom/kitchen",
+      "frequency" : "1/week",
+      "id" : "Ywtpm",
+      "shared" : true,
+      "title" : "Put bathroom and kitchen towels in hamper"
+    },
+    {
+      "completed" : false,
+      "description" : "Kitchen",
+      "frequency" : "1/week",
+      "id" : "Zjgqc",
+      "shared" : true,
+      "title" : "Replace sponges"
+    }
+  ]
+}

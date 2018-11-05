@@ -4,41 +4,41 @@ import java.util.List;
 
 public class User {
 
-    private String Id;
-    private String Name;
-    private List<Chore> Chores;
-    private String HouseId;
+    private String id;
+    private String name;
+    private List<Chore> chores;
+    private String houseId;
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public List<Chore> getChores() {
-        return Chores;
+        return chores;
     }
 
     public void setChores(List<Chore> chores) {
-        Chores = chores;
+        this.chores = chores;
     }
 
     public String getHouseId() {
-        return HouseId;
+        return houseId;
     }
 
     public void setHouseId(String houseId) {
-        HouseId = houseId;
+        this.houseId = houseId;
     }
 
 }

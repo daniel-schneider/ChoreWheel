@@ -2,60 +2,59 @@ package com.danware.chorewheel.DataModels;
 
 public class Chore {
 
-    public String Id;
-    public String Title;
-    public String Description;
-    public String Frequency;
-    public boolean Completed;
+    public String id;
+    public String title;
+    public String description;
+    public String frequency;
+    public boolean completed;
+    public boolean shared;
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public String getFrequency() {
-        return Frequency;
+        return frequency;
     }
 
     public void setFrequency(String frequency) {
-        Frequency = frequency;
+        this.frequency = frequency;
     }
 
     public boolean isCompleted() {
-        return Completed;
+        return completed;
     }
 
     public void setCompleted(boolean completed) {
-        Completed = completed;
+        this.completed = completed;
     }
 
     public boolean isShared() {
-        return Shared;
+        return shared;
     }
 
     public void setShared(boolean shared) {
-        Shared = shared;
+        shared = shared;
     }
-
-    public boolean Shared;
 
 }

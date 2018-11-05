@@ -4,32 +4,31 @@ import java.util.List;
 
 public class House {
 
-    public String Id;
+    public String id;
+    private List<Chore> chores;
+    public List<User> user;
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public List<Chore> getChores() {
-        return Chores;
+        return chores;
     }
 
     public void setChores(List<Chore> chores) {
-        Chores = chores;
+        this.chores = chores;
     }
 
     public List<com.danware.chorewheel.DataModels.User> getUser() {
-        return User;
+        return user;
     }
 
     public void setUser(List<com.danware.chorewheel.DataModels.User> user) {
-        User = user;
+        this.user = user;
     }
-
-    public List<Chore> Chores;
-    public List<User> User;
 }

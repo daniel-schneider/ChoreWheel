@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "826130025364",
+    "firebase_url": "https://chore-wheel-bc59b.firebaseio.com",
+    "project_id": "chore-wheel-bc59b",
+    "storage_bucket": "chore-wheel-bc59b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826130025364:android:177e87273bb901c2",
+        "android_client_info": {
+          "package_name": "com.danware.chorewheel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826130025364-66h02lq3scb18sl9m62uelqf4mg9btfr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6XE4BP6ZoOMf87WcljaJen0uzOH2ylOQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
