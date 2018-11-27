@@ -1,9 +1,15 @@
 package com.danware.chorewheel.Onboarding;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
+import com.danware.chorewheel.MainActivity;
 import com.danware.chorewheel.R;
+import com.danware.chorewheel.utils.Constants;
+import com.danware.chorewheel.utils.Utils;
 
 public class OnboardingActivity extends AppCompatActivity {
 
@@ -12,11 +18,23 @@ public class OnboardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
 
-        OnboardingFragment onboardingFragment = new OnboardingFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_frame, onboardingFragment)
-                .addToBackStack(null)
-                .commit();
+        String houseName = PreferenceManager
+                .getDefaultSharedPreferences(this)
+                .getString(Constants.HOUSE_NAME_KEY, null);
+
+        if(houseName == null || houseName.isEmpty()) {
+            Log.i(Utils.getTAG(this), "User does not belong to house. Starting OnBoarding.");
+            OnboardingFragment onboardingFragment = new OnboardingFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame, onboardingFragment)
+                    .addToBackStack(null)
+                    .commit();
+        } else {
+            Log.i(Utils.getTAG(this), "House name: " + houseName + "starting MainActivity");
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+
     }
 
 //    private void uploadInitialChoreList() {

@@ -9,11 +9,25 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.danware.chorewheel.DataModels.Chore;
+import com.danware.chorewheel.DataModels.User;
 import com.danware.chorewheel.utils.Constants;
+import com.danware.chorewheel.utils.Utils;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -30,9 +44,16 @@ public class ChoreFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    static List<String> mKeys = new ArrayList<>();
+    public static List<Chore> mAllChores = new ArrayList<>();
+    public static List<User> mAllusers = new ArrayList<>();
+
+
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mRef;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -69,6 +90,44 @@ public class ChoreFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+    }
+
+    private void getChoreData(DataSnapshot dataSnapshot) {
+        String houseName = PreferenceManager
+                .getDefaultSharedPreferences(getContext()).
+                        getString(Constants.HOUSE_NAME_KEY, "");
+        DataSnapshot choreSnapshot = dataSnapshot.child("Houses").child(houseName).child("chores");
+
+        for (DataSnapshot ds : choreSnapshot.getChildren()) {
+            Chore chore = ds.getValue(Chore.class);
+            mAllChores.add(chore);
+
+            Log.d(Utils.getTAG(this), "chore ID: " + chore.getId());
+            Log.d(Utils.getTAG(this), "chore title: " + chore.getTitle());
+            Log.d(Utils.getTAG(this), "chore description: " + chore.getDescription());
+            Log.d(Utils.getTAG(this), "chore Frequency: " +  chore.getFrequency());
+
+            mAdapter = new ChoreListAdapter(mAllChores);
+            mRecyclerView.setAdapter(mAdapter);
+
+        }
+    }
+
+    private void getUserData(DataSnapshot dataSnapshot) {
+        String houseName = PreferenceManager
+                .getDefaultSharedPreferences(getContext()).
+                        getString(Constants.HOUSE_NAME_KEY, "");
+        DataSnapshot usersSnapshot = dataSnapshot.child("Houses").child(houseName).child("user");
+
+        for (DataSnapshot snapshot : usersSnapshot.getChildren()) {
+            User user = snapshot.getValue(User.class);
+            mAllusers.add(user);
+
+            Log.d(Utils.getTAG(this), "User name: " + user.getName());
+            Log.d(Utils.getTAG(this), "User ID: " + user.getId());
+            Log.d(Utils.getTAG(this), "User House: " + user.getHouseId());
+        }
     }
 
     @Override
@@ -81,16 +140,34 @@ public class ChoreFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = view.findViewById(R.id.choreList);
         String houseName = PreferenceManager
                 .getDefaultSharedPreferences(getContext()).
                 getString(Constants.HOUSE_NAME_KEY, "");
 
-        mAdapter = new ChoreListAdapter(houseName);
+        mRecyclerView = view.findViewById(R.id.choreList);
         mLayoutManager = new LinearLayoutManager(getContext());
 
-        mRecyclerView.setAdapter(mAdapter);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mRef = mFirebaseDatabase.getReference();
+
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                getChoreData(dataSnapshot);
+                getUserData(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
         mRecyclerView.setLayoutManager(mLayoutManager);
+//        Utils.assignChores(getContext());
+//        findHouseChores(houseName);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -116,6 +193,61 @@ public class ChoreFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    public List<Chore> findHouseChores(String id) {
+        DatabaseReference houseDatabase = FirebaseDatabase.getInstance().getReference("Houses");
+        Query houseQuery = houseDatabase.child(id).child("chores");
+        houseQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                for (DataSnapshot child: children) {
+                    mAllChores.add(child.getValue(Chore.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        houseQuery.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                for (DataSnapshot child: children) {
+                    mAllChores.add(child.getValue(Chore.class));
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d(Utils.getTAG(this), "this item is not in the list");
+
+            }
+        });
+
+        mAdapter.notifyDataSetChanged();
+        return mAllChores;
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this

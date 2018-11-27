@@ -20,6 +20,10 @@ public class ChoreListAdapter extends RecyclerView.Adapter<ChoreListAdapter.Chor
         mChoreList = Utils.findHouse(houseName);
     }
 
+    public ChoreListAdapter(List<Chore> choreList) {
+        mChoreList = choreList;
+    }
+
     @NonNull
     @Override
     public ChoreListItemView onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -39,6 +43,13 @@ public class ChoreListAdapter extends RecyclerView.Adapter<ChoreListAdapter.Chor
             return 0;
         }
         return mChoreList.size();
+    }
+
+    public void updateChores(List<Chore> chores) {
+        mChoreList.clear();
+        mChoreList.addAll(chores);
+        notifyDataSetChanged();
+
     }
 
     public class ChoreListItemView extends RecyclerView.ViewHolder {

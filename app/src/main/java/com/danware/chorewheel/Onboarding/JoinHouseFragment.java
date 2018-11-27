@@ -63,14 +63,12 @@ public class JoinHouseFragment extends Fragment {
             public void onClick(View view) {
                 if (!editText.getText().toString().isEmpty())
                 {
-//                    findHouse(editText.getText().toString());
                     SharedPreferences appPrefs = PreferenceManager
                             .getDefaultSharedPreferences(getActivity().getApplicationContext());
                     appPrefs.edit().putString(Constants.HOUSE_NAME_KEY, editText.getText().toString()).apply();
 
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
-
                 }
             }
         });
